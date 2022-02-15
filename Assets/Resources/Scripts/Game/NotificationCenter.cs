@@ -51,7 +51,7 @@ public class NotificationCenter : MonoBehaviour
 
     #region Add Observer
 
-    public void AddObserver(DelFunction observer, NotiMessage msg/*, Component sender*/)
+    public void AddObserver(DelFunction observer, ENotiMessage msg/*, Component sender*/)
     {
         if (_notifications[msg] == null)
         {
@@ -65,7 +65,7 @@ public class NotificationCenter : MonoBehaviour
     #endregion
 
     #region Remove Observer
-    public void RemoveObserver(DelFunction observer, NotiMessage msg)
+    public void RemoveObserver(DelFunction observer, ENotiMessage msg)
     {
         List<DelFunction> notifyList = (List<DelFunction>)_notifications[msg];
 
@@ -85,12 +85,12 @@ public class NotificationCenter : MonoBehaviour
     #endregion
 
     #region Post Notification
-    public void PostNotification(NotiMessage aMsg)
+    public void PostNotification(ENotiMessage aMsg)
     {
         PostNotification(aMsg, null);
     }
 
-    public void PostNotification(NotiMessage aMsg, Hashtable aData)
+    public void PostNotification(ENotiMessage aMsg, Hashtable aData)
     {
         PostNotification(new Notification(aMsg, aData));
     }
@@ -128,22 +128,22 @@ public class NotificationCenter : MonoBehaviour
 }
 public class Notification
 {
-    public NotiMessage msg;
+    public ENotiMessage msg;
     public Hashtable data;
-    private static Notification _instance = new Notification(NotiMessage.UNKNOWN, null);
-    public Notification(NotiMessage aMsg)
+    private static Notification _instance = new Notification(ENotiMessage.UNKNOWN, null);
+    public Notification(ENotiMessage aMsg)
     {
         msg = aMsg;
         data = null;
     }
 
-    public Notification(NotiMessage aMsg, Hashtable aData)
+    public Notification(ENotiMessage aMsg, Hashtable aData)
     {
         msg = aMsg;
         data = aData;
     }
 
-    public static Notification Instantiate(NotiMessage aMsg, Hashtable aData)
+    public static Notification Instantiate(ENotiMessage aMsg, Hashtable aData)
     {
         _instance.msg = aMsg;
         if (aData == null)
@@ -157,22 +157,26 @@ public class Notification
         return _instance;
     }
 
-    public static Notification Instantiate(NotiMessage aMsg)
+    public static Notification Instantiate(ENotiMessage aMsg)
     {
         _instance.msg = aMsg;
         return _instance;
     }
 }
 
-public enum NotiMessage
+public enum ENotiMessage
 {
     UNKNOWN = 0,
+
+    //500 ~ 1000 GameSceneState 관련
+    ChangeSceneState = 500,
     //1000 ~ 2000 Bounce 관련
     OnBallHitGround = 1000,
     TestNoti,
 }
 
-public enum DataParamKey
+public enum EDataParamKey
 {
+    //숫자관련
     Integer, //일반 int 변수형 낱개로 보낼때
 }
