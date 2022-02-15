@@ -6,7 +6,7 @@ public class UnitController : UnitElement
 {
     public void Init()
     {
-        NotificationCenter.Instance.AddObserver(OnNotification, NotiMessage.TestNoti);
+        //NotificationCenter.Instance.AddObserver(OnNotification, NotiMessage.TestNoti);
     }
     public void Set()
     {
@@ -24,12 +24,12 @@ public class UnitController : UnitElement
     }
     void OnNotification(Notification noti)
     {
-        switch (noti.msg)
-        {
-            case NotiMessage.TestNoti:
-                SungJun(noti);
-                break;
-        }
+        //switch (noti.msg)
+        //{
+        //    case NotiMessage.TestNoti:
+        //        SungJun(noti);
+        //        break;
+        //}
     }
 
     void SungJun(Notification noti)
