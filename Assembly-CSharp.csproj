@@ -53,9 +53,13 @@
     <UnityVersion>2019.4.35f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\NotificationCenter.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\BaseApplication.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\GameManager.cs" />
-    <Compile Include="Assets\Resources\Scripts\Game\NotificationCenter.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Unit\UnitApplication.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Unit\UnitController.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Unit\UnitModel.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Unit\UnitView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
