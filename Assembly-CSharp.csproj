@@ -53,7 +53,6 @@
     <UnityVersion>2019.4.35f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\NotificationCenter.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\BaseApplication.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\InGameApplication.cs" />
@@ -73,6 +72,7 @@
     <Compile Include="Assets\Resources\Scripts\Game\Lobby\LobbyModel.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\Lobby\LobbyView.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\UI\tempBtn.cs" />
+    <Compile Include="Assets\Resources\Scripts\NotificationCenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
