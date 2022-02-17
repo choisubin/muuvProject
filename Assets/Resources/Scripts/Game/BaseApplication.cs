@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 public class BaseElement : MonoBehaviour
 {
-    public BaseApplication app
-    {
-        get
-        {
-            return GameObject.FindObjectOfType<BaseApplication>();
-        }
-    }
+    //public BaseApplication app
+    //{
+    //    get
+    //    {
+    //        return GameObject.FindObjectOfType<BaseApplication>();
+    //    }
+    //}
 }
 
 public abstract class BaseApplication : MonoBehaviour, IGameBasicModule
