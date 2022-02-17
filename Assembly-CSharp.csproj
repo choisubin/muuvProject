@@ -53,17 +53,20 @@
     <UnityVersion>2019.4.35f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\NotificationCenter.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\BaseApplication.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\GameManager.cs" />
-    <Compile Include="Assets\Resources\Scripts\Game\InGame\InGameApplication.cs" />
-    <Compile Include="Assets\Resources\Scripts\Game\InGame\InGameController.cs" />
-    <Compile Include="Assets\Resources\Scripts\Game\InGame\InGameModel.cs" />
-    <Compile Include="Assets\Resources\Scripts\Game\InGame\InGameView.cs" />
-    <Compile Include="Assets\Resources\Scripts\Game\InGame\Unit\UnitApplication.cs" />
-    <Compile Include="Assets\Resources\Scripts\Game\InGame\Unit\UnitController.cs" />
-    <Compile Include="Assets\Resources\Scripts\Game\InGame\Unit\UnitModel.cs" />
-    <Compile Include="Assets\Resources\Scripts\Game\InGame\Unit\UnitView.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\InGameApplication.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\InGameController.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\InGameModel.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\InGameView.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\MatchTileMap\MatchTileMapApplication.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\MatchTileMap\MatchTileMapController.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\MatchTileMap\MatchTileMapModel.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\MatchTileMap\MatchTileMapView.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\Unit\UnitApplication.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\Unit\UnitController.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\Unit\UnitModel.cs" />
+    <Compile Include="Assets\Resources\Scripts\Game\InGame\Common\Unit\UnitView.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\Lobby\LobbyApplication.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\Lobby\LobbyController.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\Lobby\LobbyModel.cs" />
@@ -74,6 +77,7 @@
     <Compile Include="Assets\Resources\Scripts\Game\PoolManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\ResourceManager.cs" />
     <Compile Include="Assets\Resources\Scripts\Game\UI\tempBtn.cs" />
+    <Compile Include="Assets\Resources\Scripts\NotificationCenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -252,6 +256,12 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.35f1\Editor\Data\Managed\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.35f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.35f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.35f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
