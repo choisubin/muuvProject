@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour, System.IDisposable
     {
         InitStateApplication();
         InitHandlers();
+        DefinitionManager.Instance.LoadJson();
         NotificationCenter.Instance.AddObserver(OnNotification, ENotiMessage.ChangeSceneState);
         ChangeState(EGameState.LOBBY);
     }
@@ -44,16 +45,16 @@ public class GameManager : MonoBehaviour, System.IDisposable
     private void InitStateApplication()
     {
         GameObject go = Instantiate(Resources.Load("Prefabs/Game/InGameApplication", typeof(GameObject)), this.transform) as GameObject;
-        _app.Add(EGameState.INGAME,go.GetComponent<InGameApplication>());
+        _app.Add(EGameState.INGAME, go.GetComponent<InGameApplication>());
 
         go = Instantiate(Resources.Load("Prefabs/Game/LobbyApplication", typeof(GameObject)), this.transform) as GameObject;
-        _app.Add(EGameState.LOBBY,go.GetComponent<LobbyApplication>());
+        _app.Add(EGameState.LOBBY, go.GetComponent<LobbyApplication>());
     }
 
     private void InitHandlers()
     {
         _handlers.Clear();
-        foreach (KeyValuePair<EGameState, BaseApplication> item in _app) 
+        foreach (KeyValuePair<EGameState, BaseApplication> item in _app)
         {
             _handlers.Add(item.Key, item.Value);
         }
