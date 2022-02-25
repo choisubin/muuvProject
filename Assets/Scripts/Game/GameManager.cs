@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour, System.IDisposable
     {
         InitStateApplication();
         InitHandlers();
-        DefinitionManager.Instance.LoadJson();
+        Debug.LogError(DefinitionManager.Instance);
         NotificationCenter.Instance.AddObserver(OnNotification, ENotiMessage.ChangeSceneState);
         ChangeState(EGameState.LOBBY);
+        
     }
 
     // Update is called once per frame
