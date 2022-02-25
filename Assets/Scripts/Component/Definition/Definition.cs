@@ -33,6 +33,22 @@ public class StageDetailMapDefinition
 }
 
 [Serializable]
+public class StageDetailMapDefinitionWrapper : ILoader<int, StageDetailMapDefinition>
+{
+    public List<StageDetailMapDefinition> definitions = new List<StageDetailMapDefinition>();
+    public Dictionary<int, StageDetailMapDefinition> MakeDict()
+    {
+        Dictionary<int, StageDetailMapDefinition> dict = new Dictionary<int, StageDetailMapDefinition>();
+        foreach (StageDetailMapDefinition definition in definitions)
+        {
+            dict.Add(definition.key, definition);
+            Debug.LogError(definition);
+        }
+        return dict;
+    }
+}
+
+[Serializable]
 public class StageDetailDefinitionWrapper : ILoader<int, StageDetailDefinition>
 {
     public List<StageDetailDefinition> definitions = new List<StageDetailDefinition>();

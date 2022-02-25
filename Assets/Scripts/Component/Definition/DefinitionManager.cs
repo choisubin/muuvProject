@@ -41,23 +41,28 @@ public class DefinitionManager : MonoBehaviour
 
     public void Awake()
     {
-        LoadJson();
+        LoadAllJson();
     }
-    public Dictionary<int, StageDetailDefinition> stageDetailDefinition { get; private set; } = new Dictionary<int, StageDetailDefinition>();
-    public StageDetailMapDefinition StageDetailMapDefinition { get; private set; } = new StageDetailMapDefinition();
-    public void LoadJson()
+    private Dictionary<int, StageDetailDefinition> _stageDetailDefinition  = new Dictionary<int, StageDetailDefinition>();
+    private Dictionary<int, StageDetailMapDefinition> _stageDetailMapDefinition = new Dictionary<int, StageDetailMapDefinition>();
+    
+    Hashtable _definitions = new Hashtable();
+    private void LoadJson<Wrapper, Definition>(string path)
     {
-        //stageDetailDefinition = LoadJson<StageDetailDefinitionWrapper, int, StageDetailDefinition>("StageDetailDefinition").MakeDict();
-        StageDetailMapDefinition = LoadJson<StageDetailMapDefinition>("Definition/StageDetailMapDefinition");
-        Debug.LogError(DefinitionManager.Instance.StageDetailMapDefinition.key);
-        Debug.LogError(DefinitionManager.Instance.StageDetailMapDefinition.width);
-        Debug.LogError(DefinitionManager.Instance.StageDetailMapDefinition.height);
-        foreach(var a in StageDetailMapDefinition.mapGrid)
-        {
-            Debug.Log(a);
-        }
-
+        path = "Definition/" + path;
+        _definitions[typeof(Definition)] = LoadJson<StageDetailMapDefinitionWrapper, int, StageDetailMapDefinition>(path).MakeDict();
+        Debug.LogError(_definitions[typeof(Definition)]);
     }
+    private void LoadAllJson()
+    {
+        LoadJson<StageDetailMapDefinitionWrapper, StageDetailMapDefinition>("StageDetailMapDefinition");
+    }
+    //public void LoadJson()
+    //{
+    //    //stageDetailDefinition = LoadJson<StageDetailDefinitionWrapper, int, StageDetailDefinition>("StageDetailDefinition").MakeDict();
+    //    _stageDetailMapDefinition = LoadJson<StageDetailMapDefinitionWrapper, int, StageDetailMapDefinition>("Definition/StageDetailMapDefinition").MakeDict();
+    //    //DefinitionManager.Instance.GetDatas<DialogueActionDefinition>()
+    //}
     Loader LoadJson<Loader>(string path)
     { 
         TextAsset textAsset = Resources.Load<TextAsset>(path);
@@ -68,5 +73,14 @@ public class DefinitionManager : MonoBehaviour
     {
         TextAsset textAsset = Resources.Load<TextAsset>(path);
         return JsonUtility.FromJson<Loader>(textAsset.text);
+    }
+
+    public T GetDatas<T>()
+    {
+        if(_definitions.ContainsKey(typeof(T)))
+        {
+            return (T)_definitions[typeof(T)];
+        }
+        return default(T);
     }
 }
