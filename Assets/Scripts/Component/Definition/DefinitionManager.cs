@@ -43,31 +43,12 @@ public class DefinitionManager : MonoBehaviour
     {
         LoadAllJson();
     }
-    private Dictionary<int, StageDetailDefinition> _stageDetailDefinition  = new Dictionary<int, StageDetailDefinition>();
-    private Dictionary<int, StageDetailMapDefinition> _stageDetailMapDefinition = new Dictionary<int, StageDetailMapDefinition>();
-    
+
     Hashtable _definitions = new Hashtable();
-    private void LoadJson<Wrapper, Definition>(string path)
-    {
-        path = "Definition/" + path;
-        _definitions[typeof(Definition)] = LoadJson<StageDetailMapDefinitionWrapper, int, StageDetailMapDefinition>(path).MakeDict();
-        Debug.LogError(_definitions[typeof(Definition)]);
-    }
     private void LoadAllJson()
     {
-        LoadJson<StageDetailMapDefinitionWrapper, StageDetailMapDefinition>("StageDetailMapDefinition");
-    }
-    //public void LoadJson()
-    //{
-    //    //stageDetailDefinition = LoadJson<StageDetailDefinitionWrapper, int, StageDetailDefinition>("StageDetailDefinition").MakeDict();
-    //    _stageDetailMapDefinition = LoadJson<StageDetailMapDefinitionWrapper, int, StageDetailMapDefinition>("Definition/StageDetailMapDefinition").MakeDict();
-    //    //DefinitionManager.Instance.GetDatas<DialogueActionDefinition>()
-    //}
-    Loader LoadJson<Loader>(string path)
-    { 
-        TextAsset textAsset = Resources.Load<TextAsset>(path);
-        Debug.LogError(textAsset.text);
-        return JsonUtility.FromJson<Loader>(textAsset.text);
+        _definitions[typeof(StageDetailMapDefinition)] = LoadJson<StageDetailMapDefinitionContainer, int, StageDetailMapDefinition>("Definition/StageDetailMapDefinition").MakeDict();
+    
     }
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
     {
@@ -75,11 +56,20 @@ public class DefinitionManager : MonoBehaviour
         return JsonUtility.FromJson<Loader>(textAsset.text);
     }
 
-    public T GetDatas<T>()
+    public Dictionary<int, T> GetDatas<T>()
     {
         if(_definitions.ContainsKey(typeof(T)))
         {
-            return (T)_definitions[typeof(T)];
+            return _definitions[typeof(T)] as Dictionary<int, T>;
+        }
+        return null;
+    }
+    public T GetData<T>(int key)
+    {
+        if (_definitions.ContainsKey(typeof(T)))
+        {
+            Dictionary<int, T> definition = _definitions[typeof(T)] as Dictionary<int, T>;
+            return definition[key];
         }
         return default(T);
     }

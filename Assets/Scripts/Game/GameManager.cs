@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour, System.IDisposable
         InitStateApplication();
         InitHandlers();
         Debug.LogError(DefinitionManager.Instance);
+        Debug.LogError(DefinitionManager.Instance.GetData<StageDetailMapDefinition>(1).height);
+        Debug.LogError(DefinitionManager.Instance.GetDatas<StageDetailMapDefinition>());
         NotificationCenter.Instance.AddObserver(OnNotification, ENotiMessage.ChangeSceneState);
         ChangeState(EGameState.LOBBY);
         
