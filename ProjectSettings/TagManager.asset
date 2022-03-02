@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 965650477
+    locked: 0
+  - name: BGEffect
+    uniqueID: 75305965
+    locked: 0
+  - name: Grid
+    uniqueID: 508332067
+    locked: 0
+  - name: MonsterLine
+    uniqueID: 3225155455
+    locked: 0
